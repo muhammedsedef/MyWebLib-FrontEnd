@@ -26,7 +26,7 @@ const Search = ({match}) => {
             setResults(fuse.search(match.params.query));
             setLoading(false)
             results && console.log(results);
-        }, 500);
+        }, 1000);
     }, [])
 
     
