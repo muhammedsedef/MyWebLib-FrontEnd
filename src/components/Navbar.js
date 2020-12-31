@@ -60,7 +60,7 @@ const Navbar = () => {
                 Authorization: 'Bearer ' + localStorage.getItem("token")
             }
         };
-       axios.get(`http://localhost:8000/members/${localStorage.getItem("currentUser")}`, config)
+       axios.get(`https://my-web-lib.herokuapp.com/members/${localStorage.getItem("currentUser")}`, config)
         .then(res => {
             setUser(res.data.data);
             setLoading(false);

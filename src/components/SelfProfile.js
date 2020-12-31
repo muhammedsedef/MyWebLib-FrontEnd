@@ -36,7 +36,7 @@ const SelfProfile = () => {
                 Authorization: 'Bearer ' + localStorage.getItem("token")
             }
         };
-       axios.get(`http://localhost:8000/members/${localStorage.getItem("currentUser")}`, config)
+       axios.get(`https://my-web-lib.herokuapp.com/members/${localStorage.getItem("currentUser")}`, config)
         .then(res => {
             console.log(res);
             setUserInfo(res.data.data);
@@ -48,7 +48,7 @@ const SelfProfile = () => {
     }
 
     const getPosts = () => {
-        axios.get(`http://localhost:8000/posts`)
+        axios.get(`https://my-web-lib.herokuapp.com/posts`)
         .then(res => {
             console.log(res.data);
             setPosts(res.data);

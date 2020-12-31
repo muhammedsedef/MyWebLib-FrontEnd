@@ -32,7 +32,7 @@ const Search = ({match}) => {
     
 
     const getUsers = () => {
-        axios.get(`http://localhost:8000/members/`)
+        axios.get(`https://my-web-lib.herokuapp.com/members/`)
         .then(res => {
             console.log(res);
             users = (res.data.data);

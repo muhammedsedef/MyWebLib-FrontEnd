@@ -36,7 +36,7 @@ const Login = () => {
             password: password
         }
 
-        axios.post("http://localhost:8000/members/login", data)
+        axios.post("https://my-web-lib.herokuapp.com/members/login", data)
             .then(res => {
                 console.log(res);
                 localStorage.setItem("token", res.data.token);

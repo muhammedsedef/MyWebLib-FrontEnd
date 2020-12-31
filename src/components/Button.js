@@ -50,7 +50,7 @@ const Button = (props) => {
                     Authorization: 'Bearer ' + localStorage.getItem("token")
                 }
             };
-           axios.get(`http://localhost:8000/members/${localStorage.getItem("currentUser")}`, config)
+           axios.get(`https://my-web-lib.herokuapp.com/members/${localStorage.getItem("currentUser")}`, config)
             .then(res => {
                 console.log(res.data.data.follow);
                 userFollowsTemp = res.data.data.follow;              
@@ -73,7 +73,7 @@ const Button = (props) => {
             data:{
                 id: props.id,
             },
-            url: "http://localhost:8000/members/follow"
+            url: "https://my-web-lib.herokuapp.com/members/follow"
         }).then((res) => {
             console.log(res)
         })
@@ -93,7 +93,7 @@ const Button = (props) => {
             data:{
                 id: props.id,
             },
-            url: "http://localhost:8000/members/unFollow"
+            url: "https://my-web-lib.herokuapp.com/members/unFollow"
         }).then((res) => {
             console.log(res)
         })

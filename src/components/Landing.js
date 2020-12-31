@@ -55,7 +55,7 @@ const Landing = () => {
                 email: email,
                 password: password
             },
-            url: "http://localhost:8000/members/signup",
+            url: "https://my-web-lib.herokuapp.com/members/signup",
         }).then((res) => {
             console.log(res)
             if(res.status == 200){

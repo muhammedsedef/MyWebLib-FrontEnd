@@ -37,7 +37,7 @@ const AddContent = () => {
                 score: score,
                 category: "cat"
             },
-            url: "http://localhost:8000/posts"
+            url: "https://my-web-lib.herokuapp.com/posts"
         }).then((res) => {
             console.log(res)
             if(res.status == 200){

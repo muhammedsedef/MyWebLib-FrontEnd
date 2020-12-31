@@ -46,7 +46,7 @@ const Profile = ( {match} ) => {
                 Authorization: 'Bearer ' + localStorage.getItem("token")
             }
         };
-       axios.get(`http://localhost:8000/members/${match.params.id}`, config)
+       axios.get(`https://my-web-lib.herokuapp.com/members/${match.params.id}`, config)
         .then(res => {
             console.log(res);
             setUserInfo(res.data.data);
@@ -59,7 +59,7 @@ const Profile = ( {match} ) => {
     }
 
     const getPosts = () => {
-        axios.get(`http://localhost:8000/posts`)
+        axios.get(`https://my-web-lib.herokuapp.com/posts`)
         .then(res => {
             console.log(res.data);
             setPosts(res.data);
