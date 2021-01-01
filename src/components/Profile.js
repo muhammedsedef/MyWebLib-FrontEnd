@@ -26,10 +26,10 @@ const Profile = ( {match} ) => {
 
     
     useEffect(() => {
-        console.log(match.params.id);
+        
         getUserInfo();
         getPosts();
-        console.log(getUsersPosts);
+        
     }, [])
     
     const handleClickUI = () => {
@@ -48,7 +48,7 @@ const Profile = ( {match} ) => {
         };
        axios.get(`https://my-web-lib.herokuapp.com/members/${match.params.id}`, config)
         .then(res => {
-            console.log(res);
+            
             setUserInfo(res.data.data);
             setFollowers(res.data.data.followers);
             localStorage.setItem("follower", res.data.data.followers.length);
@@ -62,11 +62,11 @@ const Profile = ( {match} ) => {
     const getPosts = () => {
         axios.get(`https://my-web-lib.herokuapp.com/posts`)
         .then(res => {
-            console.log(res.data);
+            
             setPosts(res.data);
             myposts= res.data;
             usersfavposts = getUsersNotReversedPosts();
-            console.log(usersfavposts);
+            
             setFavBook(getfavouriteBook());
             setFavMovie(getfavouriteMovie());
             setUsersPosts(getUsersPosts());
@@ -96,10 +96,10 @@ const Profile = ( {match} ) => {
     
     const getUsersPosts = () => {
         const userposts = [];
-        console.log("data in get users" + myposts)
+        
         myposts && myposts.data.forEach(post => {
             if (post.authorID === match.params.id){
-                console.log(post)
+                
                 userposts.push(post);
             }
         })
@@ -109,10 +109,10 @@ const Profile = ( {match} ) => {
 
     const getUsersNotReversedPosts = () => {
         const userposts = [];
-        console.log("data in get users" + myposts)
+        
         myposts && myposts.data.forEach(post => {
             if (post.authorID === match.params.id){
-                console.log(post)
+                
                 userposts.push(post);
             }
         })
@@ -130,7 +130,7 @@ const Profile = ( {match} ) => {
         bookposts.sort((a,b) => {
             return a.score-b.score;
         })
-         console.log(bookposts)
+         
          return bookposts[bookposts.length - 1].title;
         
     } 
@@ -146,7 +146,7 @@ const Profile = ( {match} ) => {
         movieposts.sort((a,b) => {
             return a.score-b.score;
         })
-         console.log(movieposts)
+         
          return movieposts[movieposts.length - 1].title;
         
     }      

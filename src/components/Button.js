@@ -33,12 +33,12 @@ const Button = (props) => {
     const setButtonVisuals = () =>{
        if (checkIsFollowing(userFollowsTemp)){
            setFollow("unfollow")
-           console.log('set button to unfollow')
+           
            
        }
        else{
            setFollow("follow");
-           console.log('set button to follow')
+           
        }
        
     }
@@ -52,7 +52,7 @@ const Button = (props) => {
             };
            axios.get(`https://my-web-lib.herokuapp.com/members/${localStorage.getItem("currentUser")}`, config)
             .then(res => {
-                console.log(res.data.data.follow);
+                
                 userFollowsTemp = res.data.data.follow;              
                 setIsFollowing(checkIsFollowing(userFollowsTemp));
                 setLoading(false);
@@ -85,9 +85,9 @@ const Button = (props) => {
             },
             url: "https://my-web-lib.herokuapp.com/members/follow"
         }).then((res) => {
-            console.log(res)
+            
             document.getElementById("follower").innerHTML = res.data.data.followers.length;
-            console.log(document.getElementById("follower").innerHTML = res.data.data.followers.length)
+            
             changeText();
         })
         .catch(error =>{
@@ -108,9 +108,9 @@ const Button = (props) => {
             },
             url: "https://my-web-lib.herokuapp.com/members/unFollow"
         }).then((res) => {
-            console.log(res)
+           
             document.getElementById("follower").innerHTML = res.data.data.followers.length;
-            console.log(document.getElementById("follower").innerHTML = res.data.data.followers.length)
+            
             changeText();
         })
         .catch(error =>{

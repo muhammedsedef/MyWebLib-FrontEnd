@@ -48,10 +48,10 @@ const Home = () => {
     useEffect(() => {
         axios.get(`https://my-web-lib.herokuapp.com/posts`)
         .then(res => {
-            console.log(res)
+            
             setAllPosts(res.data);
             allPostsTemp = res.data.data;
-            console.log(allPostsTemp);
+            
             res.data.data.reverse();
             setAuthorInfo(res.data.authorInfo);
             setTimeout(() => {
@@ -72,10 +72,10 @@ const Home = () => {
         };
        axios.get(`https://my-web-lib.herokuapp.com/members/${localStorage.getItem("currentUser")}`, config)
         .then(res => {
-            console.log(res.data.data.follow);
+            
             userFollowingTemp = res.data.data.follow;
             setUserFollows(userFollowingTemp);
-            console.log(userFollowingTemp);
+            
         })} 
        
 
@@ -86,7 +86,7 @@ const Home = () => {
                 for (let j = 0; j < userFollowingTemp.length; j++) {
                    if(allPostsTemp[i].authorID === userFollowingTemp[j].userID){
                        postsWanted.push(allPostsTemp[i])
-                       console.log(allPostsTemp[i])
+                       
                    }
                     
                 }

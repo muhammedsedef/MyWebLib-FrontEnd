@@ -16,7 +16,7 @@ const Search = ({match}) => {
     useEffect(() => {
         axios.get(`https://my-web-lib.herokuapp.com/members/`)
         .then(res => {
-            console.log(res);
+            
             users = (res.data.data);
             const fuse = new Fuse(users, {
                 keys:[
@@ -26,7 +26,7 @@ const Search = ({match}) => {
             fuse.search(match.params.query);
             setResults(fuse.search(match.params.query));
             setLoading(false)
-            console.log(results);
+            
         })
         .catch(error => {
             console.log(error.response)
@@ -36,18 +36,6 @@ const Search = ({match}) => {
 
 
     
-        // console.log(match.params.query);
-        // setTimeout(() => {
-        //     const fuse = new Fuse(users, {
-        //         keys:[
-        //             "firstName"
-        //         ]
-        //     });
-        //     fuse.search(match.params.query);
-        //     setResults(fuse.search(match.params.query));
-        //     setLoading(false)
-        //     results && console.log(results);
-        // }, 1000);
    
     
     

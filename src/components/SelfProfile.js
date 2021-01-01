@@ -20,10 +20,10 @@ const SelfProfile = () => {
     const [favMovie, setFavMovie] = useState("");
 
     useEffect(() => {
-        console.log(localStorage.getItem("currentUser"));
+        
         getUserInfo();
         getPosts();
-        console.log(getUsersPosts);
+        
     }, [])
 
     const checkIsSelfAccount = (author) => {
@@ -38,7 +38,7 @@ const SelfProfile = () => {
         };
        axios.get(`https://my-web-lib.herokuapp.com/members/${localStorage.getItem("currentUser")}`, config)
         .then(res => {
-            console.log(res);
+            
             setUserInfo(res.data.data);
             setuserLoading(false);
         })
@@ -50,11 +50,11 @@ const SelfProfile = () => {
     const getPosts = () => {
         axios.get(`https://my-web-lib.herokuapp.com/posts`)
         .then(res => {
-            console.log(res.data);
+            
             setPosts(res.data);
             myposts= res.data;
             usersfavposts = getUsersNotReversedPosts();
-            console.log(usersfavposts);
+            
             setFavBook(getfavouriteBook());
             setFavMovie(getfavouriteMovie());
             setUsersPosts(getUsersPosts());
@@ -82,10 +82,10 @@ const SelfProfile = () => {
     
     const getUsersPosts = () => {
         const userposts = [];
-        console.log("data in get users" + myposts)
+        
         myposts && myposts.data.forEach(post => {
             if (post.authorID === localStorage.getItem("currentUser")){
-                console.log(post)
+                
                 userposts.push(post);
             }
         })
@@ -95,10 +95,10 @@ const SelfProfile = () => {
 
     const getUsersNotReversedPosts = () => {
         const userposts = [];
-        console.log("data in get users" + myposts)
+        
         myposts && myposts.data.forEach(post => {
             if (post.authorID === localStorage.getItem("currentUser")){
-                console.log(post)
+                
                 userposts.push(post);
             }
         })
@@ -120,7 +120,7 @@ const SelfProfile = () => {
         bookposts.sort((a,b) => {
             return a.score-b.score;
         })
-         console.log(bookposts)
+         
          return bookposts[bookposts.length - 1].title;
         
     } 
@@ -136,7 +136,7 @@ const SelfProfile = () => {
         movieposts.sort((a,b) => {
             return a.score-b.score;
         })
-         console.log(movieposts)
+         
          return movieposts[movieposts.length - 1].title;
         
     }      

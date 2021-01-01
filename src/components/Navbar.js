@@ -90,7 +90,6 @@ const Navbar = () => {
                         <img src={UserPP} width="36px" alt=""/>
                     </div>
                 </Link>
-                <img src={Settings} alt=""/>
                 <Link to="/">
                     <img onClick={logOut} className={classes.logout} src={LogOut} width="36px" alt=""/>
                 </Link>

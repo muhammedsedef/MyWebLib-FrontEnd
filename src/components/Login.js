@@ -26,7 +26,6 @@ const Login = () => {
     }
     const passwordChangeHandler = (e) => {
         setPassword(e.target.value);
-        console.log(password) 
     }
 
     const loginProcess = () => {
@@ -38,7 +37,6 @@ const Login = () => {
 
         axios.post("https://my-web-lib.herokuapp.com/members/login", data)
             .then(res => {
-                console.log(res);
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("currentUser", res.data.data._id);
                 if (res.status == 200 && localStorage.getItem("token")) {

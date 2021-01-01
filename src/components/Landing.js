@@ -57,7 +57,6 @@ const Landing = () => {
             },
             url: "https://my-web-lib.herokuapp.com/members/signup",
         }).then((res) => {
-            console.log(res)
             if(res.status == 200){
                 addToast("You have signed up succesfully!", {
                     appearance: 'success',

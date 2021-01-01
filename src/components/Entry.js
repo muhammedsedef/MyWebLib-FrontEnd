@@ -11,7 +11,6 @@ import axios from 'axios'
 const Entry = ( props ) => {
 
     const handleDelete = () => {
-        console.log("deleted" + props.postid);
         axios({
             method: "DELETE",
             headers: {
@@ -22,7 +21,7 @@ const Entry = ( props ) => {
             },
             url: `https://my-web-lib.herokuapp.com/posts/${props.postid}`
         }).then((res) => {
-            console.log(res)
+            
             window.location.reload();
 
         }).catch(error =>{

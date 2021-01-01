@@ -39,7 +39,6 @@ const AddContent = () => {
             },
             url: "https://my-web-lib.herokuapp.com/posts"
         }).then((res) => {
-            console.log(res)
             if(res.status == 200){
                 addToast("You post has been sent succesfully!", {
                     appearance: 'success',
