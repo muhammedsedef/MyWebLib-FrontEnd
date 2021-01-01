@@ -24,26 +24,30 @@ import Search from './components/Search'
 import SearchResult from './components/SearchResult'
 import AddContent from './components/AddContent'
 import SelfUserInfo from './components/SelfUserInfo'
+import ProtectedRoute from './components/ProtectedRoute'
 import { ToastProvider } from "react-toast-notifications";
 
 const App = () => {
   return (
     <div className="App">
       <Router>
+    <Switch>
         <Route path="/" exact component={Landing}/>
+        <Route path="/index.html" component={Landing} />
         <Route path="/login" exact component={Login}/>
         <Route path="/lib">
           <Navbar/>
-          <Route path="/lib/home" exact component={Home}/>
-          <Route path="/lib/profile" exact component={SelfProfile}/>
-          <Route path="/lib/profile/:id" exact component={Profile}/>
-          <Route path="/lib/userinfo" exact component={UserInfo}/>
-          <Route path="/lib/search/:query" exact component={Search}/>
+          <ProtectedRoute path="/lib/home" exact component={Home}/>
+          <ProtectedRoute path="/lib/profile" exact component={SelfProfile}/>
+          <ProtectedRoute path="/lib/profile/:id" exact component={Profile}/>
+          <ProtectedRoute path="/lib/userinfo" exact component={UserInfo}/>
+          <ProtectedRoute path="/lib/search/:query" exact component={Search}/>
         </Route>
         <Route path="/test">
           <Route path="/test/addcontent" component={AddContent} />
           <Route path="/test/self" component={SelfUserInfo}/>
         </Route>
+    </Switch>
       </Router>
     </div>
   );

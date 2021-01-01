@@ -2,7 +2,7 @@ import React from 'react'
 import Entry from './Entry'
 import UserInfo from './UserInfo'
 import SelfUserInfo from './SelfUserInfo'
-import classes from './styles/profile.module.css';
+import classes from './styles/selfprofile.module.css';
 import axios from 'axios'
 import ReactLoading from 'react-loading'
 import {useEffect, useState} from 'react'
@@ -145,7 +145,7 @@ const SelfProfile = () => {
         
             userloading && postloading ? <div className={classes.loader}><ReactLoading type="spin" color="#2DB7E3" height={50} width={50} /></div> :
             <div className={classes.profile}>        
-             {usersPosts && userInfo && usersPosts.length && userInfo.followers.length && userInfo.follow.length && 
+             {usersPosts && userInfo &&
              <SelfUserInfo 
                     follows={userInfo.follow} 
                     id={userInfo._id} 
@@ -162,6 +162,7 @@ const SelfProfile = () => {
                     {posts && usersPosts && usersPosts.length ? usersPosts.map (post => {
                         return <Entry
                         key={post._id}
+                        postid={post._id}
                         authorID={checkIsSelfAccount(post.authorID) ? "" : post.authorID}
                         firstname={matchUser(post).firstName}
                         lastname={matchUser(post).lastName}

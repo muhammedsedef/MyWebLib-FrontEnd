@@ -8,8 +8,6 @@ import Button from './Button'
 
 const UserInfo = (props) => {
 
-    
-
     return (
         <div className={classes.wrapper}>
             <div className={classes.userwithfollowers}>
@@ -22,8 +20,8 @@ const UserInfo = (props) => {
             </div>
             <div className={classes.interactioninfo}>
                 <span><strong>{props.posts}</strong>  posts</span>
-                <span><strong>{props.followers}</strong>  followers</span>
-                <span><strong>{props.following}</strong>  following</span>
+                <span><strong id="follower" >{props.followers}</strong>  followers</span>
+                <span><strong id="following" >{props.following}</strong>  following</span>
             </div>
             </div>
             <div className={classes.favourites}>

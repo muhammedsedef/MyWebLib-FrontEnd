@@ -16,8 +16,8 @@ const Button = (props) => {
     
 
     useEffect(() => {
-        setButtonVisuals(); 
         setButtonState();
+        setButtonVisuals(); 
     }, [clicked])
 
     const checkIsFollowing = (follows) => {
@@ -62,9 +62,19 @@ const Button = (props) => {
             })
         }
 
+    const changeText = () => {
+        if(follow === "unfollow"){
+            setFollow("follow");
+        }
+        else{
+            setFollow("unfollow");
+        }
+    }
+
     const followUnfollowUser = (e) => {
-    if(!isFollowing){
+    if(follow ==="follow"){
         followTemp = "follow";
+        
         axios({
             method: "POST",
             headers: {
@@ -76,6 +86,9 @@ const Button = (props) => {
             url: "https://my-web-lib.herokuapp.com/members/follow"
         }).then((res) => {
             console.log(res)
+            document.getElementById("follower").innerHTML = res.data.data.followers.length;
+            console.log(document.getElementById("follower").innerHTML = res.data.data.followers.length)
+            changeText();
         })
         .catch(error =>{
             console.log(error.response)
@@ -96,6 +109,9 @@ const Button = (props) => {
             url: "https://my-web-lib.herokuapp.com/members/unFollow"
         }).then((res) => {
             console.log(res)
+            document.getElementById("follower").innerHTML = res.data.data.followers.length;
+            console.log(document.getElementById("follower").innerHTML = res.data.data.followers.length)
+            changeText();
         })
         .catch(error =>{
             console.log(error.response)

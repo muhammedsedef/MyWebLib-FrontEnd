@@ -6,8 +6,29 @@ import Book from '../images/contentbook.svg'
 import classes from './styles/entry.module.css'
 import { useState } from 'react'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 const Entry = ( props ) => {
+
+    const handleDelete = () => {
+        console.log("deleted" + props.postid);
+        axios({
+            method: "DELETE",
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem("token"), 
+            },
+            data:{
+                memberID: props.postid
+            },
+            url: `https://my-web-lib.herokuapp.com/posts/${props.postid}`
+        }).then((res) => {
+            console.log(res)
+            window.location.reload();
+
+        }).catch(error =>{
+            console.log(error.response)
+        })
+    }
     
     return (
         <div title="entry" className={classes.entry}>
@@ -19,7 +40,7 @@ const Entry = ( props ) => {
                     </div>
                 </Link>
                 <p>{props.date}</p>
-                <img title="delete" className={classes.delete} width="16px" src={Delete} alt=""/>
+                <img onClick={handleDelete} title="delete" className={classes.delete} width="16px" src={Delete} alt=""/>
             </div>
             <div className={classes.contentinfo}>
                 <img className={classes.icon} src={(props.type == "book")? Book : Movie} width="53px" alt=""/>

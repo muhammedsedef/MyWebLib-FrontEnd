@@ -49,3 +49,8 @@
       width: 0px;
   }
   }
+.entries [title~="delete"]{
+  visibility: visible;
+  pointer-events: all;
+}
+

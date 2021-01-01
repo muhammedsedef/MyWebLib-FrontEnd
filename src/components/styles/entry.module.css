@@ -89,6 +89,7 @@
     top: 7px;
     visibility: hidden;
     pointer-events: none;
+    cursor: pointer;
 }
 
 

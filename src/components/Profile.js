@@ -30,7 +30,7 @@ const Profile = ( {match} ) => {
         getUserInfo();
         getPosts();
         console.log(getUsersPosts);
-    }, [clicked])
+    }, [])
     
     const handleClickUI = () => {
         setClicked(true);
@@ -51,6 +51,7 @@ const Profile = ( {match} ) => {
             console.log(res);
             setUserInfo(res.data.data);
             setFollowers(res.data.data.followers);
+            localStorage.setItem("follower", res.data.data.followers.length);
             setuserLoading(false);
         })
         .catch(error => {
@@ -157,20 +158,29 @@ const Profile = ( {match} ) => {
         
             userloading && postloading ? <div className={classes.loader}><ReactLoading type="spin" color="#2DB7E3" height={50} width={50} /></div> :
             <div className={classes.profile}>        
-             {usersPosts && userInfo && <UserInfo onclick={handleClickUI} follows={userInfo.follow} id={userInfo._id} firstname={userInfo.firstName} lastname={userInfo.lastName} posts={usersPosts.length} followers={userInfo.followers.length} following={userInfo.follow.length} favouritebook={favBook} favouritemovie={favMovie}/>}
+             {usersPosts && userInfo && <UserInfo 
+             follows={userInfo.follow} 
+             id={userInfo._id} 
+             firstname={userInfo.firstName} 
+             lastname={userInfo.lastName} 
+             posts={usersPosts.length} 
+             followers={userInfo.followers.length} 
+             following={userInfo.follow.length} 
+             favouritebook={favBook} 
+             favouritemovie={favMovie}/>}
                 <div className={classes.entries}>
                     
                     {usersPosts && usersPosts.length ? usersPosts.map (post => {
                         return <Entry
-                        key={post._id}
-                        authorID={checkIsSelfAccount(post.authorID) ? "" : post.authorID}
-                        firstname={matchUser(post).firstName}
-                        lastname={matchUser(post).lastName}
-                        type={post.type}
-                        contentname={post.title} 
-                        comment={post.description} 
-                        rating={post.score} 
-                        date={formatDate(post.date)}
+                            key={post._id}
+                            authorID={checkIsSelfAccount(post.authorID) ? "" : post.authorID}
+                            firstname={matchUser(post).firstName}
+                            lastname={matchUser(post).lastName}
+                            type={post.type}
+                            contentname={post.title} 
+                            comment={post.description} 
+                            rating={post.score} 
+                            date={formatDate(post.date)}
                         /> 
                     }): !postloading && <NotFound msg="This user has not posted anything yet" />
                     }

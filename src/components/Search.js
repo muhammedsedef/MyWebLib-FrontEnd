@@ -12,15 +12,8 @@ const Search = ({match}) => {
     let users = [];
     const [results, setResults] = useState();
     const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        console.log(match.params.query);
-        getUsers();
-    }, [])
-
     
-
-    const getUsers = () => {
+    useEffect(() => {
         axios.get(`https://my-web-lib.herokuapp.com/members/`)
         .then(res => {
             console.log(res);
@@ -38,13 +31,33 @@ const Search = ({match}) => {
         .catch(error => {
             console.log(error.response)
         })
-    }
+    }, [])
 
+
+
+    
+        // console.log(match.params.query);
+        // setTimeout(() => {
+        //     const fuse = new Fuse(users, {
+        //         keys:[
+        //             "firstName"
+        //         ]
+        //     });
+        //     fuse.search(match.params.query);
+        //     setResults(fuse.search(match.params.query));
+        //     setLoading(false)
+        //     results && console.log(results);
+        // }, 1000);
+   
+    
+    
+    
+    
     return (
         <div className={ classes.search }>
             <div className={ classes.result }>
                 {loading ? <div className={classes.loader}><ReactLoading type="spin" color="#2DB7E3" height={50} width={50} /></div> :
-                    results && results.length ? results.map(result =>{
+                   results && results.length ? results.map(result =>{
                        return <SearchResult name={result.item.firstName} lastname={result.item.lastName} id={result.item._id} follows={result.item.follow} />
                     }): !loading && <NotFound msg="Could not find anything related to your search."/>
                 }
