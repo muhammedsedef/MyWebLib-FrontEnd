@@ -44,6 +44,9 @@ const AddContent = () => {
                     appearance: 'success',
                     autoDismiss: true,
                 })
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
             }
 
         }).catch(error =>{
