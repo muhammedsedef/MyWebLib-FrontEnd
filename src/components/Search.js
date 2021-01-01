@@ -16,17 +16,6 @@ const Search = ({match}) => {
     useEffect(() => {
         console.log(match.params.query);
         getUsers();
-        setTimeout(() => {
-            const fuse = new Fuse(users, {
-                keys:[
-                    "firstName"
-                ]
-            });
-            fuse.search(match.params.query);
-            setResults(fuse.search(match.params.query));
-            setLoading(false)
-            results && console.log(results);
-        }, 1000);
     }, [])
 
     
@@ -36,7 +25,15 @@ const Search = ({match}) => {
         .then(res => {
             console.log(res);
             users = (res.data.data);
-           
+            const fuse = new Fuse(users, {
+                keys:[
+                    "firstName"
+                ]
+            });
+            fuse.search(match.params.query);
+            setResults(fuse.search(match.params.query));
+            setLoading(false)
+            console.log(results);
         })
         .catch(error => {
             console.log(error.response)
