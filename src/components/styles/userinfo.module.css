@@ -77,6 +77,11 @@
     height: 190px;
 }
 
+.favourites img{
+    min-width: 62px;
+    min-height: 62px;
+}
+
 .favourites div{
     display: flex;
     align-items: center;
